@@ -204,10 +204,6 @@
     outline:2px solid var(--accent);outline-offset:2px;
   }
   .form-note{margin-top:10px;font-size:13px;color:var(--ink-soft);}
-  .form-ack{
-    margin-top:14px;font-size:14px;padding:11px 14px;border-radius:3px;
-    background:var(--bg-deep);border:1px solid var(--rule);color:var(--ink);
-  }
 
   /* ---------- Anatomy of an issue ---------- */
   section.anatomy{padding-block:50px;}
@@ -359,22 +355,6 @@
   footer .bar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;}
 </style>
 
-<!--
-  INTEGRATION NOTES
-  SUBSCRIBE_ACTION posts to the Netlify function in netlify/functions/subscribe.mjs,
-  which forwards the email to Beehiiv. Set BEEHIIV_API_KEY and BEEHIIV_PUBLICATION_ID
-  in Netlify's environment variables. Opening this file directly (file://) can't
-  reach the function; use `netlify dev` locally.
-
-  APPLY_ACTION: endpoint for the "apply to be featured" form. Leave blank to keep
-  it in preview mode.
--->
-<script>
-  window.MATCHA_CONFIG = {
-    SUBSCRIBE_ACTION: "/api/subscribe",
-    APPLY_ACTION: ""      // e.g. "https://tally.so/api/forms/<id>/submissions" or "https://formspree.io/f/<id>"
-  };
-</script>
 
 </head>
 <body>
@@ -402,14 +382,14 @@
       and when they can start. Like what you see? Just reply.
     </p>
 
-    <form class="signup" id="subscribe-form" novalidate>
+    <form class="signup" id="subscribe-form" name="subscribe" method="POST" action="/subscribed/" data-netlify="true" netlify-honeypot="company">
+      <input type="hidden" name="form-name" value="subscribe">
       <div class="field-row">
         <label for="subscribe-email" class="sr-only" style="position:absolute;left:-9999px;">Email address</label>
         <input id="subscribe-email" name="email" type="email" placeholder="you@yourcompany.com" required autocomplete="email">
         <button class="btn" type="submit">Subscribe for free</button>
       </div>
         <div class="hp" aria-hidden="true"><label for="subscribe-company">Company</label><input id="subscribe-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
-      <div class="form-ack" id="subscribe-ack" role="status" hidden></div>
     </form>
     <p class="form-note">Free. One email a week. Unsubscribe anytime.</p>
   </section>
@@ -521,7 +501,9 @@
       <button class="dialog-close" type="button" data-close-apply aria-label="Close">&times;</button>
     </div>
     <p class="dialog-intro">Your answers become your profile. We write it up and send it to you to check before it goes out.</p>
-    <form class="apply" id="apply-form" novalidate>
+    <form class="apply" id="apply-form" name="apply" method="POST" action="/applied/" data-netlify="true" netlify-honeypot="company">
+      <input type="hidden" name="form-name" value="apply">
+      <div class="hp" aria-hidden="true"><label for="apply-company">Company</label><input id="apply-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
       <fieldset>
         <legend>About you</legend>
         <div class="two-col">
@@ -629,7 +611,6 @@
       <div>
         <button class="btn" type="submit">Apply to be featured</button>
       </div>
-      <div class="form-ack" id="apply-ack" role="status" hidden></div>
     </form>
     </div>
     </dialog>
@@ -671,48 +652,6 @@
 <script>
 (function(){
   "use strict";
-  var cfg = window.MATCHA_CONFIG || {};
-
-  function showAck(el, message, isError){
-    el.textContent = message;
-    el.hidden = false;
-    el.style.borderColor = isError ? "var(--accent)" : "var(--rule)";
-  }
-
-  function wireForm(formId, ackId, endpoint, successMessage){
-    var form = document.getElementById(formId);
-    if(!form) return;
-    var ack = document.getElementById(ackId);
-    form.addEventListener("submit", function(e){
-      e.preventDefault();
-      if(!form.checkValidity()){
-        form.reportValidity();
-        return;
-      }
-      var data = new FormData(form);
-
-      if(!endpoint){
-        showAck(ack, "Thanks! This form isn't connected yet, so nothing was sent. (Preview mode: set SUBSCRIBE_ACTION / APPLY_ACTION in the page to go live.)", false);
-        return;
-      }
-
-      fetch(endpoint, { method: "POST", body: data })
-        .then(function(res){
-          if(res && res.ok){
-            showAck(ack, successMessage, false);
-            form.reset();
-          } else {
-            return res.json().catch(function(){ return {}; }).then(function(body){
-              showAck(ack, (body && body.error) || "Something went wrong. Please try again in a moment.", true);
-            });
-          }
-        })
-        .catch(function(){
-          showAck(ack, "Something went wrong. Please try again in a moment.", true);
-        });
-    });
-  }
-
   var dialog = document.getElementById("apply-dialog");
   if(dialog && dialog.showModal){
     document.querySelectorAll("[data-open-apply]").forEach(function(btn){
@@ -745,8 +684,6 @@
     });
   }
 
-  wireForm("subscribe-form", "subscribe-ack", cfg.SUBSCRIBE_ACTION, "You're on the list. Look out for the next issue.");
-  wireForm("apply-form", "apply-ack", cfg.APPLY_ACTION, "Thanks! We read every application by hand and will reply if it's a fit.");
 })();
 </script>
 </body>

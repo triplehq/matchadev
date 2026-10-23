@@ -3,10 +3,10 @@
 A free weekly newsletter at matchadev.com. Each issue introduces one freelance developer worth hiring, for founders, small businesses and teams. Readers reply to the email to get an introduction. Developers apply to be featured and never pay for it.
 
 Site layout (deployed on Netlify):
-- `public/` is the published site: `index.html` (single static page with the subscribe form and the developer application modal), `favicon.svg`, `apple-touch-icon.png`, `og-image.png` (1200x630 share image), `robots.txt`, `sitemap.xml`. Nothing outside `public/` is served.
-- `netlify/functions/subscribe.mjs` is served at `/api/subscribe` and forwards signups to Beehiiv. Env vars: `BEEHIIV_API_KEY`, `BEEHIIV_PUBLICATION_ID`, optional `ALLOWED_ORIGINS` (see `.env.example`). Test locally with `netlify dev`.
+- `public/` is the published site: `index.html` (single static page with the subscribe form and the developer application modal), `subscribed/` and `applied/` (thank-you pages the forms redirect to), `favicon.svg`, `apple-touch-icon.png`, `og-image.png` (1200x630 share image), `robots.txt`, `sitemap.xml`. Nothing outside `public/` is served.
+- Both forms use Netlify Forms (`data-netlify="true"`, form names `subscribe` and `apply`, honeypot field `company`). They are plain HTML posts with no JavaScript; `action` points to the thank-you page. Submissions show in Netlify under Forms. Form detection must be enabled in the Netlify UI. Netlify Forms only collects: sending the newsletter and handling unsubscribes needs an email service.
+- The thank-you pages share the main page's colour tokens and wordmark; if those change in `index.html`, update them too.
 - `og/` holds the HTML sources for the share image and touch icon; re-render with headless Chrome (command in `og/og-image.html`).
-- Form endpoints are set in `window.MATCHA_CONFIG` near the top of `index.html`. `APPLY_ACTION` is still empty (preview mode).
 
 ## Editorial voice
 
