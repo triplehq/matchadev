@@ -260,9 +260,9 @@
   /* Phones: show the start of the issue, the rest opens on tap. */
   .email-more{display:none;}
   @media (max-width:560px){
-    .email.is-clamped .email-body{max-height:560px;overflow:hidden;position:relative;}
+    .email.is-clamped .email-body{max-height:var(--clamp-at,560px);overflow:hidden;position:relative;}
     .email.is-clamped .email-body::after{
-      content:"";position:absolute;left:0;right:0;bottom:0;height:140px;
+      content:"";position:absolute;left:0;right:0;bottom:0;height:110px;
       background:linear-gradient(to bottom,transparent,var(--paper));
     }
     .email.is-clamped .email-more{
@@ -729,6 +729,16 @@
 
   var issue = document.querySelector(".email.is-clamped");
   if (issue) {
+    // Cut the preview just above the first section heading, so the fade lands on the intro text.
+    var body = issue.querySelector(".email-body");
+    var firstBreak = body.querySelector("hr");
+    var setClamp = function () {
+      var last = firstBreak && firstBreak.previousElementSibling;
+      if (last) body.style.setProperty("--clamp-at", (last.offsetTop + last.offsetHeight) + "px");
+    };
+    setClamp();
+    window.addEventListener("resize", setClamp);
+    if (document.fonts) document.fonts.ready.then(setClamp);
     issue.querySelector(".email-more").addEventListener("click", function () {
       issue.classList.remove("is-clamped");
       this.setAttribute("aria-expanded", "true");
