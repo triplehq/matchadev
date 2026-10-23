@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Source for /og-image.png (1200x630). Re-render with headless Chrome:
+     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --hide-scrollbars \
+       --window-size=1200,630 --screenshot=public/og-image.png og/og-image.html -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@500&display=block" rel="stylesheet">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;}
+  body{background:#F8F6EA;color:#1E2B16;font-family:'Fraunces',Georgia,serif;position:relative;}
+  .glow{position:absolute;right:-120px;top:50%;transform:translateY(-50%);width:620px;height:620px;border-radius:50%;background:#EDEFD9;}
+  .bowl{position:absolute;right:70px;top:120px;width:420px;height:420px;}
+  .content{position:absolute;left:80px;top:72px;right:500px;}
+  .mark{display:flex;align-items:center;gap:14px;font-size:38px;font-weight:600;letter-spacing:-0.01em;}
+  .mark svg{width:46px;height:46px;}
+  .mark i{color:#557318;font-weight:500;padding:0 1px;}
+  h1{margin:70px 0 0;font-size:72px;line-height:1.06;font-weight:600;letter-spacing:-0.02em;}
+  .foot{position:absolute;left:80px;bottom:64px;font-family:'JetBrains Mono',monospace;font-size:22px;letter-spacing:0.04em;color:#4B5A3E;}
+  .foot b{color:#557318;font-weight:500;}
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <svg class="bowl" viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M4 13h24c0 7-5.4 12-12 12S4 20 4 13Z" fill="#FFFEF8" stroke="#1E2B16" stroke-width="0.7" stroke-linejoin="round"/>
+    <ellipse cx="16" cy="13" rx="12" ry="3" fill="#8DB33A" stroke="#1E2B16" stroke-width="0.7"/>
+    <ellipse cx="14" cy="12.6" rx="4.2" ry="0.9" fill="#A9C95A"/>
+    <path d="M12.5 25.2 13 28h6l.5-2.8" fill="#FFFEF8" stroke="#1E2B16" stroke-width="0.7" stroke-linejoin="round"/>
+  </svg>
+  <div class="content">
+    <div class="mark">
+      <svg viewBox="0 0 32 32"><path d="M4 13h24c0 7-5.4 12-12 12S4 20 4 13Z" fill="none" stroke="#1E2B16" stroke-width="1.8" stroke-linejoin="round"/><ellipse cx="16" cy="13" rx="12" ry="3" fill="#8DB33A" stroke="#1E2B16" stroke-width="1.8"/><path d="M12.5 25.2 13 28h6l.5-2.8" fill="none" stroke="#1E2B16" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <span>match<i>a</i>dev</span>
+    </div>
+    <h1>One developer<br>you should hire.<br>Every week.</h1>
+  </div>
+  <div class="foot">A free weekly newsletter · <b>matchadev.com</b></div>
+</body>
+</html>

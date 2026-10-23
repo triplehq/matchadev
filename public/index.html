@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Match a Dev | One developer you should hire, every week</title>
+<meta name="description" content="A free weekly newsletter introducing one hand-picked freelance developer worth hiring. For founders, small businesses and teams. Reply to get introduced.">
+<link rel="canonical" href="https://matchadev.com/">
+<meta name="theme-color" content="#F8F6EA">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Match a Dev">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://matchadev.com/">
+<meta property="og:title" content="Match a Dev: one developer you should hire, every week">
+<meta property="og:description" content="A free weekly newsletter introducing one hand-picked freelance developer worth hiring. Reply to get introduced.">
+<meta property="og:image" content="https://matchadev.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Match a Dev: one developer you should hire, every week.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Match a Dev: one developer you should hire, every week">
+<meta name="twitter:description" content="A free weekly newsletter introducing one hand-picked freelance developer worth hiring. Reply to get introduced.">
+<meta name="twitter:image" content="https://matchadev.com/og-image.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Match a Dev",
+  "url": "https://matchadev.com/",
+  "description": "A free weekly newsletter introducing one hand-picked freelance developer worth hiring.",
+  "inLanguage": "en-GB",
+  "publisher": {
+    "@type": "Person",
+    "name": "Tamas",
+    "url": "https://terdelyi.co.uk",
+    "jobTitle": "Software engineer"
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Inter:ital,wght@0,400..600;1,400..500&family=JetBrains+Mono:wght@400..500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: a tall single-column editorial page, like scrolling down one newsletter issue —
+     masthead, hero with signup, an annotated "contents" of one issue, a full sample issue
+     rendered like a received email, an application section for developers, FAQ, footer. */
+  :root{
+    --bg:        #F8F6EA;   /* matcha-latte cream page ground */
+    --bg-deep:   #EDEFD9;   /* pale matcha band */
+    --ink:       #1E2B16;   /* deep matcha green, primary text */
+    --ink-soft:  #4B5A3E;   /* muted green for secondary text */
+    --paper:     #FFFEF8;   /* card/email paper */
+    --accent:    #557318;   /* deep matcha, safe for text and buttons */
+    --accent-ink:#FFFDF5;   /* text on accent */
+    --matcha:    #8DB33A;   /* bright matcha, decorative only (logo cup) */
+    --rule:      #DCDDC2;   /* hairline rule */
+    --rule-deep: rgba(30,43,22,0.16);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:        #141B10;
+      --bg-deep:   #0F150C;
+      --ink:       #EEF0DC;
+      --ink-soft:  #B9C4A8;
+      --paper:     #1B2415;
+      --accent:    #A9C95A;
+      --accent-ink:#141B10;
+      --matcha:    #A9C95A;
+      --rule:      #2C3823;
+      --rule-deep: rgba(238,240,220,0.16);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:        #141B10;
+    --bg-deep:   #0F150C;
+    --ink:       #EEF0DC;
+    --ink-soft:  #B9C4A8;
+    --paper:     #1B2415;
+    --accent:    #A9C95A;
+    --accent-ink:#141B10;
+    --matcha:    #A9C95A;
+    --rule:      #2C3823;
+    --rule-deep: rgba(238,240,220,0.16);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    padding-left:max(16px, env(safe-area-inset-left,0px));
+    padding-right:max(16px, env(safe-area-inset-right,0px));
+  }
+  .wrap{max-width:720px;margin:0 auto;}
+  .wrap-wide{max-width:860px;margin:0 auto;}
+  img{max-width:100%;}
+  [hidden]{display:none!important;}
+  a{color:var(--accent);}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-0.01em;line-height:1.15;text-wrap:balance;margin:0;}
+  .eyebrow{
+    font-family:'JetBrains Mono','Courier New',monospace;
+    font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--accent);font-weight:500;
+  }
+  .rule{border:0;border-top:1px solid var(--rule);margin:0;}
+  .leaf-divider{display:flex;align-items:center;justify-content:center;gap:14px;margin-block:8px;color:var(--ink-soft);}
+  .leaf-divider .line{height:1px;flex:1;background:var(--rule);}
+  .leaf-divider svg{flex:none;width:22px;height:22px;opacity:0.75;}
+
+  /* ---------- Masthead ---------- */
+  header.masthead{
+    position:sticky;top:0;z-index:50;
+    padding-block:16px;
+    border-bottom:1px solid var(--rule);
+    background:color-mix(in srgb,var(--bg) 88%,transparent);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  }
+  @media (max-width:560px){
+    header.masthead{padding-block:10px;}
+    nav.primary{gap:14px;font-size:13px;}
+  }
+  header.masthead .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .wordmark{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-weight:600;font-size:22px;letter-spacing:-0.01em;}
+  .wordmark svg.cup{flex:none;width:30px;height:30px;color:var(--ink);margin-top:-2px;}
+  footer .wordmark svg.cup{width:24px;height:24px;}
+  .wordmark .wm-word{display:inline-flex;align-items:baseline;text-transform:lowercase;}
+  .wordmark .wm-a{
+    font-style:italic;color:var(--accent);font-weight:500;
+    position:relative;padding:0 1px;
+  }
+  .tagline-pun{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:15px;color:var(--ink-soft);margin:10px 0 0;
+  }
+  .tagline-pun .wm-a{font-style:italic;color:var(--accent);}
+  nav.primary{display:flex;align-items:center;gap:22px;font-size:14px;}
+  nav.primary a{color:var(--ink);text-decoration:none;}
+  nav.primary a:hover{color:var(--accent);}
+  nav.primary a.cta{
+    color:var(--accent-ink);background:var(--ink);padding:8px 16px;border-radius:3px;
+    font-weight:500;
+  }
+
+  /* ---------- Hero ---------- */
+  section.hero{padding-block:64px 52px;}
+  section.hero .eyebrow{display:block;margin-bottom:18px;}
+  section.hero h1{font-size:clamp(34px,6vw,54px);line-height:1.08;max-width:14ch;}
+  section.hero .sub{margin-top:20px;max-width:46ch;color:var(--ink-soft);font-size:17px;}
+  section.hero .sub a{color:var(--accent);text-decoration:underline;}
+
+  form.signup{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap;max-width:460px;}
+  .field-row{display:flex;gap:10px;width:100%;flex-wrap:wrap;}
+  input[type="email"],input[type="text"],input[type="url"]{
+    font:inherit;font-size:15px;
+    min-width:0;
+    padding:13px 14px;border-radius:3px;
+    border:1px solid var(--rule-deep);
+    background:var(--paper);color:var(--ink);
+  }
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
+  [id]{scroll-margin-top:96px;}
+
+  form.signup input{flex:1 1 220px;}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+  input::placeholder,textarea::placeholder{color:var(--ink-soft);opacity:0.85;}
+  button.btn,input[type="submit"]{
+    font:inherit;font-weight:600;font-size:15px;
+    background:var(--accent);color:var(--accent-ink);
+    border:0;border-radius:3px;padding:13px 22px;cursor:pointer;
+    white-space:nowrap;
+  }
+  button.btn,input[type="submit"],nav.primary a,.dialog-close,details summary{
+    transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+  }
+  button.btn:hover,input[type="submit"]:hover{
+    background:color-mix(in srgb,var(--accent) 82%,#000);
+    transform:translateY(-1px);
+    box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 35%,transparent);
+  }
+  button.btn:active,input[type="submit"]:active{transform:translateY(0);box-shadow:none;}
+  nav.primary a.cta:hover{background:var(--accent);color:var(--accent-ink);}
+  .dialog-close:hover{background:var(--bg-deep);border-color:var(--ink);}
+  details summary:hover{color:var(--accent);}
+  @media (prefers-reduced-motion:reduce){
+    button.btn:hover,input[type="submit"]:hover{transform:none;}
+  }
+  button.btn:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px;
+  }
+  .form-note{margin-top:10px;font-size:13px;color:var(--ink-soft);}
+  .form-ack{
+    margin-top:14px;font-size:14px;padding:11px 14px;border-radius:3px;
+    background:var(--bg-deep);border:1px solid var(--rule);color:var(--ink);
+  }
+
+  /* ---------- Anatomy of an issue ---------- */
+  section.anatomy{padding-block:50px;}
+  section.anatomy h2{font-size:clamp(26px,4vw,34px);max-width:16ch;}
+  section.anatomy .lede{margin-top:12px;color:var(--ink-soft);max-width:52ch;font-size:16px;}
+  ol.contents{list-style:none;margin:14px 0 0;padding:0;}
+  ol.contents li{
+    display:grid;grid-template-columns:2.4em 1fr;gap:18px;
+    padding-block:20px;
+  }
+  ol.contents li + li{border-top:1px solid var(--rule);}
+  ol.contents .num{
+    font-family:'Fraunces',serif;font-weight:400;font-style:italic;
+    font-size:22px;color:var(--accent);line-height:1.3;
+  }
+  ol.contents h3{font-size:18px;font-weight:600;}
+  ol.contents p{margin:6px 0 0;color:var(--ink-soft);font-size:15px;max-width:48ch;}
+
+  /* ---------- Sample issue (rendered like an email) ---------- */
+  section.sample{padding-block:52px;}
+  section.sample h2{font-size:clamp(26px,4vw,34px);max-width:18ch;}
+  .sample-tag{
+    display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.05em;
+    color:var(--ink-soft);background:var(--bg-deep);border:1px solid var(--rule);
+    padding:7px 12px;border-radius:3px;
+  }
+  .sample-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;}
+
+  .email{
+    margin-top:28px;background:var(--paper);border:1px solid var(--rule);border-radius:6px;
+    overflow:hidden;
+  }
+  .email-chrome{
+    padding:16px 22px;border-bottom:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:6px;
+    font-size:13px;color:var(--ink-soft);
+  }
+  .email-chrome .row{display:flex;gap:8px;}
+  .email-chrome .row b{color:var(--ink);font-weight:600;min-width:3.6em;}
+  /* Email body uses only what email clients render reliably: system fonts,
+     headings, paragraphs, a blockquote, a plain list and dividers. */
+  .email-body{padding:30px clamp(20px,5vw,40px) 36px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6;}
+  .email-body h3,.email-body h4{font-family:Georgia,'Times New Roman',serif;font-weight:700;letter-spacing:0;}
+  .email-body .issue-no{margin:0;font-size:12px;letter-spacing:0.08em;color:var(--accent);text-transform:uppercase;}
+  .email-body h3.feature-name{font-size:28px;margin-top:8px;}
+  .email-body .role-line{margin-top:2px;color:var(--ink-soft);font-size:15px;}
+  .email-body p{margin:14px 0 0;}
+  .email-body hr{border:0;border-top:1px solid var(--rule);margin:28px 0 0;}
+  .email-body h4{font-size:19px;margin:20px 0 0;}
+  .email-body blockquote{margin:14px 0 0;padding:4px 0 4px 16px;border-left:3px solid var(--accent);font-style:italic;}
+  .email-body ul{margin:14px 0 0;padding-left:20px;}
+  .email-body li{margin-top:6px;}
+  .email-body .signoff{margin-top:20px;}
+
+  /* ---------- For developers ---------- */
+  section.devs{padding-block:52px;}
+  section.devs h2{font-size:clamp(26px,4vw,34px);max-width:18ch;}
+  section.devs .lede{margin-top:14px;color:var(--ink-soft);max-width:54ch;font-size:16px;}
+  section.devs .lede strong{color:var(--ink);}
+
+  section.devs .open-apply{margin-top:26px;}
+
+  dialog.apply-dialog{
+    width:min(640px,calc(100vw - 32px));max-height:calc(100dvh - 32px);
+    margin:auto;padding:0;border:1px solid var(--rule-deep);border-radius:6px;
+    background:var(--paper);color:var(--ink);overflow:auto;
+  }
+  dialog.apply-dialog::backdrop{background:rgba(20,27,16,0.55);}
+  .dialog-inner{padding:30px 28px 28px;}
+  .dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+  .dialog-head h3{font-size:24px;line-height:1.2;}
+  .dialog-close{
+    flex:none;width:36px;height:36px;border-radius:50%;cursor:pointer;
+    border:1px solid var(--rule-deep);background:transparent;color:var(--ink);
+    font-size:20px;line-height:1;
+  }
+  @media (max-width:560px){ .dialog-inner{padding:22px 18px 20px;} }
+
+  .dialog-intro{margin:10px 0 0;color:var(--ink-soft);font-size:15px;}
+  form.apply fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;}
+  form.apply fieldset + fieldset{margin-top:14px;}
+  form.apply legend{padding:0;margin-bottom:14px;font-family:'Fraunces',Georgia,serif;font-size:19px;font-weight:600;color:var(--ink);}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-soft);padding-top:22px;border-top:1px solid var(--rule);}
+  .check{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;}
+  .check input{margin-top:4px;accent-color:var(--accent);flex:none;}
+  .consent input{margin-top:3px;accent-color:var(--accent);flex:none;}
+  form.apply{margin-top:24px;display:flex;flex-direction:column;gap:20px;}
+  .f-group{display:flex;flex-direction:column;gap:6px;}
+  .f-group label{font-size:13.5px;font-weight:600;}
+  .f-group .hint{font-size:12.5px;color:var(--ink-soft);font-weight:400;}
+  textarea{
+    font:inherit;font-size:15px;padding:13px 14px;border-radius:3px;
+    border:1px solid var(--rule-deep);background:var(--paper);color:var(--ink);
+    resize:vertical;min-height:90px;
+  }
+  select{
+    font:inherit;font-size:15px;padding:13px 14px;border-radius:3px;
+    border:1px solid var(--rule-deep);background:var(--paper);color:var(--ink);
+  }
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .radio-row{display:flex;gap:18px;font-size:14.5px;align-items:center;}
+  .radio-row label{display:flex;align-items:center;gap:7px;font-weight:400;}
+  .radio-row input{accent-color:var(--accent);}
+  @media (max-width:560px){ .two-col{grid-template-columns:1fr;} }
+
+  /* ---------- FAQ ---------- */
+  section.faq{padding-block:52px;}
+  section.faq h2{font-size:clamp(26px,4vw,34px);}
+  details{padding-block:18px;}
+  details + details{border-top:1px solid var(--rule);}
+  details summary{
+    font-weight:600;font-size:16px;cursor:pointer;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{content:"+";font-weight:400;color:var(--accent);font-size:20px;flex:none;}
+  details[open] summary::after{content:"\2212";}
+  details .answer{margin-top:10px;color:var(--ink-soft);font-size:15px;max-width:56ch;}
+  details .answer a{color:var(--accent);text-decoration:underline;text-underline-offset:2px;}
+  details .answer a:hover{color:var(--ink);}
+
+  /* ---------- Footer ---------- */
+  footer{padding-block:40px;border-top:1px solid var(--rule);}
+  footer .wordmark{font-size:17px;}
+  footer p{margin:14px 0 0;font-size:13px;color:var(--ink-soft);max-width:56ch;}
+  footer .bar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;}
+</style>
+
+<!--
+  INTEGRATION NOTES
+  SUBSCRIBE_ACTION posts to the Netlify function in netlify/functions/subscribe.mjs,
+  which forwards the email to Beehiiv. Set BEEHIIV_API_KEY and BEEHIIV_PUBLICATION_ID
+  in Netlify's environment variables. Opening this file directly (file://) can't
+  reach the function; use `netlify dev` locally.
+
+  APPLY_ACTION: endpoint for the "apply to be featured" form. Leave blank to keep
+  it in preview mode.
+-->
+<script>
+  window.MATCHA_CONFIG = {
+    SUBSCRIBE_ACTION: "/api/subscribe",
+    APPLY_ACTION: ""      // e.g. "https://tally.so/api/forms/<id>/submissions" or "https://formspree.io/f/<id>"
+  };
+</script>
+
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap bar">
+    <div class="wordmark" role="img" aria-label="Match a Dev">
+      <svg class="cup" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 13h24c0 7-5.4 12-12 12S4 20 4 13Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="16" cy="13" rx="12" ry="3" fill="var(--matcha)" stroke="currentColor" stroke-width="1.6"/><path d="M12.5 25.2 13 28h6l.5-2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="wm-word" aria-hidden="true">match<span class="wm-a">a</span>dev</span>
+    </div>
+    <nav class="primary" aria-label="Primary">
+      <a href="#anatomy">Inside an issue</a>
+      <a href="#sample">Sample issue</a>
+      <a href="#developers">For developers</a>
+      <a class="cta" href="#subscribe">Subscribe</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" id="subscribe">
+    <h1>One developer you should hire. Every week.</h1>
+    <p class="sub">
+      For founders, small businesses and teams who need a developer they can trust. Each week we
+      introduce one freelancer worth hiring: what they're great at, how they like to work
+      and when they can start. Like what you see? Just reply.
+    </p>
+
+    <form class="signup" id="subscribe-form" novalidate>
+      <div class="field-row">
+        <label for="subscribe-email" class="sr-only" style="position:absolute;left:-9999px;">Email address</label>
+        <input id="subscribe-email" name="email" type="email" placeholder="you@yourcompany.com" required autocomplete="email">
+        <button class="btn" type="submit">Subscribe for free</button>
+      </div>
+        <div class="hp" aria-hidden="true"><label for="subscribe-company">Company</label><input id="subscribe-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="form-ack" id="subscribe-ack" role="status" hidden></div>
+    </form>
+    <p class="form-note">Free. One email a week. Unsubscribe anytime.</p>
+  </section>
+
+  <section class="anatomy wrap" id="anatomy">
+    <span class="eyebrow">Inside an issue</span>
+    <h2>What's in every cup</h2>
+    <p class="lede">
+      Short enough to read over coffee, specific enough that you could decide to hire
+      someone by the end of it.
+    </p>
+
+    <ol class="contents">
+      <li>
+        <span class="num">01</span>
+        <div>
+          <h3>The developer of the week</h3>
+          <p>The person behind the code: what they love building, how they approach their craft and what keeps them curious. Written like a profile, not a listing.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <div>
+          <h3>What they're great at</h3>
+          <p>What they do best, explained in plain words. Plus a project they're proud of and the story behind it.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <div>
+          <h3>Working together</h3>
+          <p>The kind of work they take on, from quick fixes to ongoing projects, and when they can start. Rates are shared privately once you're introduced.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">04</span>
+        <div>
+          <h3>Second cup</h3>
+          <p>A tip they swear by, plus the tool, website, book and quote that shaped how they work. Worth stealing even if you never hire them.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="sample wrap-wide" id="sample">
+    <span class="eyebrow">What it looks like</span>
+    <h2>A sample issue</h2>
+    <span class="sample-tag">Sample issue. Illustrative, not a real developer</span>
+
+    <article class="email">
+      <div class="email-chrome">
+        <div class="row"><b>From</b><span>Match a Dev &lt;hello@matchadev.com&gt;</span></div>
+        <div class="row"><b>Subject</b><span>Issue No. 1: Mara Ellis, the developer who reads before she rewrites</span></div>
+      </div>
+      <div class="email-body">
+        <!-- Email-safe on purpose: only headings, paragraphs, bold/italic, a quote,
+             a simple list and dividers, so it matches what Beehiiv and mail clients can render. -->
+        <p class="issue-no">Issue No. 1</p>
+        <h3 class="feature-name">Mara Ellis</h3>
+        <p class="role-line">Full-stack developer, Leeds, UK</p>
+
+        <p>Mara started out building websites for her dad's furniture shop and never really stopped. After eight years in product teams she went freelance, mostly so she could work closer to the people using what she builds.</p>
+        <p>She likes small, careful changes over big rewrites, and she writes things down as she goes. Lately she's been curious about how far small teams can get with AI tools, and where a developer still makes the difference.</p>
+
+        <hr>
+        <h4>What she does best</h4>
+        <p>Taking an app that works on a good day and making it work every day. Most of her clients come to her with a Laravel or Supabase backend that grew faster than anyone planned.</p>
+
+        <hr>
+        <h4>Selected projects</h4>
+        <p><strong>Studio booking system</strong><br>Her longest-running client is a family-run group of yoga studios. What began as a simple class timetable has grown, one request at a time, into the system they use for bookings, memberships, payments and waiting lists. Teachers check their classes on their phones, and the owners finally have one place to see how each studio is doing.<br><em>Laravel, Livewire, Stripe</em></p>
+        <p><strong>Supplier portal</strong><br>A small food wholesaler was spending most mornings on the phone, chasing suppliers about deliveries. Mara built a portal where suppliers see what's been ordered, confirm what they can send and flag anything that's running late. It's a modest app, but the team says it gave them back an hour a day.<br><em>Laravel, Postgres</em></p>
+        <p><strong>Fitness app launch</strong><br>A founder had built a workout-tracking app with Lovable and was two weeks from launch. The app looked finished, but any logged-in user could read everyone else's data, and sign-ups failed on some phones. Mara spent a week on database security and the sign-up flow, then stayed on for the first month after launch.<br><em>Supabase, React</em></p>
+
+        <hr>
+        <h4>Open for work</h4>
+        <p><strong>Takes on:</strong> fixes, small builds and ongoing work<br>
+           <strong>Can start:</strong> mid-November, two days a week<br>
+           <strong>Works with:</strong> Laravel, Supabase, React</p>
+
+        <hr>
+        <h4>Second cup</h4>
+        <blockquote>Before you change anything, write down how the app should behave. Half the bugs I fix come from nobody agreeing on that.</blockquote>
+        <ul>
+          <li><strong>Tool:</strong> TablePlus, for looking at real data before guessing</li>
+          <li><strong>Website:</strong> Laracasts, still where she goes to learn something new</li>
+          <li><strong>Book:</strong> <em>The Pragmatic Programmer</em> by Andrew Hunt and David Thomas</li>
+          <li><strong>Quote:</strong> "Make it work, make it right, make it fast." Kent Beck</li>
+        </ul>
+
+        <hr>
+        <p class="signoff">Want to work with Mara? Just hit reply and we'll introduce you.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="devs wrap" id="developers">
+    <span class="eyebrow">For developers</span>
+    <h2>Want to be featured?</h2>
+    <p class="lede">
+      Every developer we feature is chosen by hand, based on real work.
+      <strong>Nobody can pay to be here.</strong> If you're a freelance developer
+      who's proud of your work, we'd love to hear from you.
+    </p>
+    <button class="btn open-apply" type="button" data-open-apply>Apply to be featured</button>
+
+    <dialog class="apply-dialog" id="apply-dialog" aria-labelledby="apply-dialog-title">
+    <div class="dialog-inner">
+    <div class="dialog-head">
+      <h3 id="apply-dialog-title">Apply to be featured</h3>
+      <button class="dialog-close" type="button" data-close-apply aria-label="Close">&times;</button>
+    </div>
+    <p class="dialog-intro">Your answers become your profile. We write it up and send it to you to check before it goes out.</p>
+    <form class="apply" id="apply-form" novalidate>
+      <fieldset>
+        <legend>About you</legend>
+        <div class="two-col">
+          <div class="f-group">
+            <label for="apply-name">Name</label>
+            <input id="apply-name" name="name" type="text" required autocomplete="name">
+          </div>
+          <div class="f-group">
+            <label for="apply-email">Email</label>
+            <input id="apply-email" name="email" type="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="f-group">
+            <label for="apply-location">Where are you based?</label>
+            <input id="apply-location" name="location" type="text" placeholder="e.g. Leeds, UK" required>
+          </div>
+          <div class="f-group">
+            <label for="apply-url">Portfolio, GitHub or LinkedIn</label>
+            <input id="apply-url" name="portfolio_url" type="url" placeholder="https://" required>
+          </div>
+        </div>
+        <div class="f-group">
+          <label for="apply-story">Your story</label>
+          <span class="hint">How you got into development, what you love building and what you're curious about lately.</span>
+          <textarea id="apply-story" name="story" required></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your work</legend>
+        <div class="f-group">
+          <label for="apply-best">What do you do best?</label>
+          <span class="hint">The kind of problems people should call you for.</span>
+          <textarea id="apply-best" name="best_work" required></textarea>
+        </div>
+        <div class="f-group">
+          <label for="apply-projects">Projects you're proud of</label>
+          <span class="hint">Two or three. What was each one about, and what did you build it with?</span>
+          <textarea id="apply-projects" name="projects" rows="6" required></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Open for work</legend>
+        <div class="f-group">
+          <label for="apply-takes-on">What do you take on?</label>
+          <span class="hint">Quick fixes, small builds, ongoing work, or something else.</span>
+          <textarea id="apply-takes-on" name="takes_on" rows="2" required></textarea>
+        </div>
+        <div class="f-group">
+          <label for="apply-stack">Main stack</label>
+          <span class="hint">The languages, frameworks and tools you use most.</span>
+          <textarea id="apply-stack" name="stack" rows="2" placeholder="e.g. Laravel, Vue, Postgres, n8n" required></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Second cup</legend>
+        <div class="f-group">
+          <label for="apply-tip">A tip you swear by</label>
+          <span class="hint">Something practical a founder or small team could use straight away.</span>
+          <textarea id="apply-tip" name="tip" rows="3" required></textarea>
+        </div>
+        <div class="two-col">
+          <div class="f-group">
+            <label for="apply-tool">A tool you love <span class="hint">(optional)</span></label>
+            <input id="apply-tool" name="pick_tool" type="text">
+          </div>
+          <div class="f-group">
+            <label for="apply-website">A website you learn from <span class="hint">(optional)</span></label>
+            <input id="apply-website" name="pick_website" type="text">
+          </div>
+        </div>
+        <div class="two-col">
+          <div class="f-group">
+            <label for="apply-book">A book that shaped you <span class="hint">(optional)</span></label>
+            <input id="apply-book" name="pick_book" type="text">
+          </div>
+          <div class="f-group">
+            <label for="apply-quote">A quote you live by <span class="hint">(optional)</span></label>
+            <input id="apply-quote" name="pick_quote" type="text">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Optional extras</legend>
+        <span class="hint">Neither of these affects whether you're featured.</span>
+        <label class="check">
+          <input type="checkbox" name="share_headshot" value="yes">
+          <span>I'm happy to share a headshot to go with my profile.</span>
+        </label>
+        <label class="check">
+          <input type="checkbox" name="video_chat" value="yes">
+          <span>I'm up for a short video call to talk about my work. If you'd like to record it, ask me first and tell me how it will be used.</span>
+        </label>
+      </fieldset>
+
+      <label class="consent">
+        <input type="checkbox" name="consent" value="yes" required>
+        <span>I'm happy for Match a Dev to write about me and quote my answers. I'll get to check the profile before it's published.</span>
+      </label>
+
+      <div>
+        <button class="btn" type="submit">Apply to be featured</button>
+      </div>
+      <div class="form-ack" id="apply-ack" role="status" hidden></div>
+    </form>
+    </div>
+    </dialog>
+  </section>
+
+  <section class="faq wrap" id="faq">
+    <span class="eyebrow">FAQ</span>
+    <h2>A few honest questions</h2>
+
+    <details>
+      <summary>Is it actually free?</summary>
+      <div class="answer">Yes, totally. It's our way of giving back to the developer community.</div>
+    </details>
+    <details>
+      <summary>How are developers chosen?</summary>
+      <div class="answer">By hand. We look at real portfolios, GitHub activity and work history. No algorithm, and nobody can buy their way in.</div>
+    </details>
+    <details>
+      <summary>Do featured developers pay to be included?</summary>
+      <div class="answer">No. Being featured is never paid for. We can't promise anyone will hire you, but it puts you and your work in front of people who might.</div>
+    </details>
+    <details>
+      <summary>Who's behind this?</summary>
+      <div class="answer">Match a Dev is run by <a href="https://terdelyi.co.uk" target="_blank" rel="noopener">Tamas</a>, a software engineer based in the UK.</div>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap bar">
+    <div>
+      <div class="wordmark" role="img" aria-label="Match a Dev"><svg class="cup" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 13h24c0 7-5.4 12-12 12S4 20 4 13Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><ellipse cx="16" cy="13" rx="12" ry="3" fill="var(--matcha)" stroke="currentColor" stroke-width="1.6"/><path d="M12.5 25.2 13 28h6l.5-2.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="wm-word" aria-hidden="true">match<span class="wm-a">a</span>dev</span></div>
+      <p class="tagline-pun">Match a dev. Every week.</p>
+      <p>We only use your email to send the newsletter and, if you apply, to review your application. We don't sell it, and we don't share it with featured developers until you choose to reply.</p>
+      <p>Match a Dev is pre-launch. Some issue numbers and names on this page are illustrative until the first real issue goes out.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var cfg = window.MATCHA_CONFIG || {};
+
+  function showAck(el, message, isError){
+    el.textContent = message;
+    el.hidden = false;
+    el.style.borderColor = isError ? "var(--accent)" : "var(--rule)";
+  }
+
+  function wireForm(formId, ackId, endpoint, successMessage){
+    var form = document.getElementById(formId);
+    if(!form) return;
+    var ack = document.getElementById(ackId);
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+      }
+      var data = new FormData(form);
+
+      if(!endpoint){
+        showAck(ack, "Thanks! This form isn't connected yet, so nothing was sent. (Preview mode: set SUBSCRIBE_ACTION / APPLY_ACTION in the page to go live.)", false);
+        return;
+      }
+
+      fetch(endpoint, { method: "POST", body: data })
+        .then(function(res){
+          if(res && res.ok){
+            showAck(ack, successMessage, false);
+            form.reset();
+          } else {
+            return res.json().catch(function(){ return {}; }).then(function(body){
+              showAck(ack, (body && body.error) || "Something went wrong. Please try again in a moment.", true);
+            });
+          }
+        })
+        .catch(function(){
+          showAck(ack, "Something went wrong. Please try again in a moment.", true);
+        });
+    });
+  }
+
+  var dialog = document.getElementById("apply-dialog");
+  if(dialog && dialog.showModal){
+    document.querySelectorAll("[data-open-apply]").forEach(function(btn){
+      btn.addEventListener("click", function(){ dialog.showModal(); });
+    });
+    document.querySelectorAll("[data-close-apply]").forEach(function(btn){
+      btn.addEventListener("click", function(){ dialog.close(); });
+    });
+    // Close when clicking the backdrop (outside the dialog box)
+    dialog.addEventListener("click", function(e){
+      if(e.target === dialog) dialog.close();
+    });
+  }
+
+  wireForm("subscribe-form", "subscribe-ack", cfg.SUBSCRIBE_ACTION, "You're on the list. Look out for the next issue.");
+  wireForm("apply-form", "apply-ack", cfg.APPLY_ACTION, "Thanks! We read every application by hand and will reply if it's a fit.");
+})();
+</script>
+</body>
+</html>
