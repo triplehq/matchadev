@@ -114,11 +114,6 @@
   [hidden]{display:none!important;}
   a{color:var(--accent);}
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-0.01em;line-height:1.15;text-wrap:balance;margin:0;}
-  .eyebrow{
-    font-family:'JetBrains Mono','Courier New',monospace;
-    font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
-    color:var(--accent);font-weight:500;
-  }
   .rule{border:0;border-top:1px solid var(--rule);margin:0;}
   .leaf-divider{display:flex;align-items:center;justify-content:center;gap:14px;margin-block:8px;color:var(--ink-soft);}
   .leaf-divider .line{height:1px;flex:1;background:var(--rule);}
@@ -164,7 +159,6 @@
 
   /* ---------- Hero ---------- */
   section.hero{padding-block:64px 52px;}
-  section.hero .eyebrow{display:block;margin-bottom:18px;}
   section.hero h1{font-size:clamp(34px,6vw,54px);line-height:1.08;max-width:14ch;}
   section.hero .sub{margin-top:20px;max-width:46ch;color:var(--ink-soft);font-size:17px;}
   section.hero .sub a{color:var(--accent);text-decoration:underline;}
@@ -235,13 +229,10 @@
   /* ---------- Sample issue (rendered like an email) ---------- */
   section.sample{padding-block:52px;}
   section.sample h2{font-size:clamp(26px,4vw,34px);max-width:18ch;}
-  .sample-tag{
-    display:inline-flex;align-items:center;gap:8px;margin-top:14px;
-    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.05em;
-    color:var(--ink-soft);background:var(--bg-deep);border:1px solid var(--rule);
-    padding:7px 12px;border-radius:3px;
+  .sample-note{
+    margin:10px 0 0;font-family:'Fraunces',Georgia,serif;font-style:italic;
+    font-size:17px;color:var(--ink-soft);
   }
-  .sample-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;}
 
   .email{
     margin-top:28px;background:var(--paper);border:1px solid var(--rule);border-radius:6px;
@@ -409,7 +400,6 @@
   </section>
 
   <section class="anatomy wrap" id="anatomy">
-    <span class="eyebrow">Inside an issue</span>
     <h2>What's in every cup</h2>
     <p class="lede">
       Short enough to read over coffee, specific enough that you could decide to hire
@@ -449,23 +439,22 @@
   </section>
 
   <section class="sample wrap-wide" id="sample">
-    <span class="eyebrow">What it looks like</span>
     <h2>A sample issue</h2>
-    <span class="sample-tag">Sample issue. Illustrative, not a real developer</span>
+    <p class="sample-note">Hannah is made up. The format is what lands in your inbox each week.</p>
 
     <article class="email">
       <div class="email-chrome">
         <div class="row"><b>From</b><span>Match a Dev &lt;hello@matchadev.com&gt;</span></div>
-        <div class="row"><b>Subject</b><span>Issue No. 1: Mara Ellis, the developer who reads before she rewrites</span></div>
+        <div class="row"><b>Subject</b><span>Issue No. 1: Hannah Clarke, the developer who reads before she rewrites</span></div>
       </div>
       <div class="email-body">
         <!-- Email-safe on purpose: only headings, paragraphs, bold/italic, a quote,
              a simple list and dividers, so it matches what Beehiiv and mail clients can render. -->
         <p class="issue-no">Issue No. 1</p>
-        <h3 class="feature-name">Mara Ellis</h3>
+        <h3 class="feature-name">Hannah Clarke</h3>
         <p class="role-line">Full-stack developer, Leeds, UK</p>
 
-        <p>Mara started out building websites for her dad's furniture shop and never really stopped. After eight years in product teams she went freelance, mostly so she could work closer to the people using what she builds.</p>
+        <p>Hannah started out building websites for her dad's furniture shop and never really stopped. After eight years in product teams she went freelance, mostly so she could work closer to the people using what she builds.</p>
         <p>She likes small, careful changes over big rewrites, and she writes things down as she goes. Lately she's been curious about how far small teams can get with AI tools, and where a developer still makes the difference.</p>
 
         <hr>
@@ -475,8 +464,8 @@
         <hr>
         <h4>Selected projects</h4>
         <p><strong>Studio booking system</strong><br>Her longest-running client is a family-run group of yoga studios. What began as a simple class timetable has grown, one request at a time, into the system they use for bookings, memberships, payments and waiting lists. Teachers check their classes on their phones, and the owners finally have one place to see how each studio is doing.<br><em>Laravel, Livewire, Stripe</em></p>
-        <p><strong>Supplier portal</strong><br>A small food wholesaler was spending most mornings on the phone, chasing suppliers about deliveries. Mara built a portal where suppliers see what's been ordered, confirm what they can send and flag anything that's running late. It's a modest app, but the team says it gave them back an hour a day.<br><em>Laravel, Postgres</em></p>
-        <p><strong>Fitness app launch</strong><br>A founder had built a workout-tracking app with Lovable and was two weeks from launch. The app looked finished, but any logged-in user could read everyone else's data, and sign-ups failed on some phones. Mara spent a week on database security and the sign-up flow, then stayed on for the first month after launch.<br><em>Supabase, React</em></p>
+        <p><strong>Supplier portal</strong><br>A small food wholesaler was spending most mornings on the phone, chasing suppliers about deliveries. Hannah built a portal where suppliers see what's been ordered, confirm what they can send and flag anything that's running late. It's a modest app, but the team says it gave them back an hour a day.<br><em>Laravel, Postgres</em></p>
+        <p><strong>Fitness app launch</strong><br>A founder had built a workout-tracking app with Lovable and was two weeks from launch. The app looked finished, but any logged-in user could read everyone else's data, and sign-ups failed on some phones. Hannah spent a week on database security and the sign-up flow, then stayed on for the first month after launch.<br><em>Supabase, React</em></p>
 
         <hr>
         <h4>Open for work</h4>
@@ -495,13 +484,12 @@
         </ul>
 
         <hr>
-        <p class="signoff">Want to work with Mara? Just hit reply and we'll introduce you.</p>
+        <p class="signoff">Want to work with Hannah? Just hit reply and we'll introduce you.</p>
       </div>
     </article>
   </section>
 
   <section class="devs wrap" id="developers">
-    <span class="eyebrow">For developers</span>
     <h2>Want to be featured?</h2>
     <p class="lede">
       Every developer we feature is chosen by hand, based on real work.
@@ -632,7 +620,6 @@
   </section>
 
   <section class="faq wrap" id="faq">
-    <span class="eyebrow">FAQ</span>
     <h2>A few honest questions</h2>
 
     <details>
