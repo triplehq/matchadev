@@ -338,6 +338,16 @@
 
   /* ---------- Footer ---------- */
   footer{padding-block:40px;border-top:1px solid var(--rule);}
+  /* Tighter vertical rhythm on phones; desktop spacing stays as is. */
+  @media (max-width:560px){
+    section.hero{padding-block:36px 24px;}
+    section.anatomy,section.sample,section.devs,section.faq{padding-block:24px;}
+    .form-note{margin-bottom:0;}
+    ol.contents li:last-child{padding-bottom:0;}
+    section.sample .email{margin-top:20px;}
+    details{padding-block:14px;}
+    footer{padding-block:28px;}
+  }
   footer .wordmark{font-size:17px;}
   footer p{margin:14px 0 0;font-size:13px;color:var(--ink-soft);max-width:56ch;}
   footer .bar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;}
