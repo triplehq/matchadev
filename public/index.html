@@ -41,10 +41,17 @@
   }
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Inter:ital,wght@0,400..600;1,400..500&family=JetBrains+Mono:wght@400..500&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* Self-hosted fonts (SIL Open Font License), latin subset, preloaded above
+     so headings don't visibly switch from a fallback font. */
+  @font-face{font-family:'Fraunces';font-style:normal;font-weight:300 700;font-display:swap;src:url(fonts/fraunces-latin.woff2) format('woff2');}
+  @font-face{font-family:'Fraunces';font-style:italic;font-weight:400 600;font-display:swap;src:url(fonts/fraunces-italic-latin.woff2) format('woff2');}
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(fonts/inter-latin.woff2) format('woff2');}
+  @font-face{font-family:'Inter';font-style:italic;font-weight:400 500;font-display:swap;src:url(fonts/inter-italic-latin.woff2) format('woff2');}
+  @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url(fonts/jetbrains-mono-latin.woff2) format('woff2');}
+
   /* Layout: a tall single-column editorial page, like scrolling down one newsletter issue —
      masthead, hero with signup, an annotated "contents" of one issue, a full sample issue
      rendered like a received email, an application section for developers, FAQ, footer. */
