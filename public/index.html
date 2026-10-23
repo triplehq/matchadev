@@ -257,6 +257,20 @@
   .email-body h4{font-size:19px;margin:20px 0 0;}
   .email-body blockquote{margin:14px 0 0;padding:4px 0 4px 16px;border-left:3px solid var(--accent);font-style:italic;}
   .email-body ul{margin:14px 0 0;padding-left:20px;}
+  /* Phones: show the start of the issue, the rest opens on tap. */
+  .email-more{display:none;}
+  @media (max-width:560px){
+    .email.is-clamped .email-body{max-height:560px;overflow:hidden;position:relative;}
+    .email.is-clamped .email-body::after{
+      content:"";position:absolute;left:0;right:0;bottom:0;height:140px;
+      background:linear-gradient(to bottom,transparent,var(--paper));
+    }
+    .email.is-clamped .email-more{
+      display:block;width:100%;padding:14px;border:0;border-top:1px solid var(--rule);
+      background:var(--paper);color:var(--accent);font:500 15px 'Inter',system-ui,sans-serif;cursor:pointer;
+    }
+    .email.is-clamped .email-more:hover{background:var(--bg-deep);}
+  }
   .email-body li{margin-top:6px;}
   .email-body .signoff{margin-top:20px;}
 
@@ -443,7 +457,7 @@
     <h2>A sample issue</h2>
     <p class="sample-note">Hannah is made up. The format is what lands in your inbox each week.</p>
 
-    <article class="email">
+    <article class="email is-clamped">
       <div class="email-chrome">
         <div class="row"><b>From</b><span>Match a Dev &lt;hello@matchadev.com&gt;</span></div>
         <div class="row"><b>Subject</b><span>Issue No. 1: Hannah Clarke, the developer who reads before she rewrites</span></div>
@@ -487,6 +501,7 @@
         <hr>
         <p class="signoff">Want to work with Hannah? Just hit reply and we'll introduce you.</p>
       </div>
+      <button type="button" class="email-more" aria-expanded="false">Read the full issue</button>
     </article>
   </section>
 
@@ -709,6 +724,14 @@
     // Close when clicking the backdrop (outside the dialog box)
     dialog.addEventListener("click", function(e){
       if(e.target === dialog) dialog.close();
+    });
+  }
+
+  var issue = document.querySelector(".email.is-clamped");
+  if (issue) {
+    issue.querySelector(".email-more").addEventListener("click", function () {
+      issue.classList.remove("is-clamped");
+      this.setAttribute("aria-expanded", "true");
     });
   }
 
